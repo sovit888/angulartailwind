@@ -1,0 +1,20 @@
+<div
+  class="fixed top-0 w-[220px] shadow-sidebarShadow h-full text-white bg-[#03203C] duration-300"
+  [ngClass]="{ 'left-0': !sidebarStatus, 'left-[-220px]': sidebarStatus }"
+>
+  <ul class="list-none px-2">
+    <li
+      *ngFor="let sidebarlist of sidebarmenuLists"
+      class="m-0 hover:bg-blue-50 hover:text-black duration-150 rounded"
+    >
+      <a [routerLink]="sidebarlist.link" class="flex items-center">
+        <mat-icon class="text-[18px]" aria-hidden="false">{{
+          sidebarlist.icon
+        }}</mat-icon>
+        <span class="ml-[3px] font-medium font-sans opacity-90">{{
+          sidebarlist.title
+        }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

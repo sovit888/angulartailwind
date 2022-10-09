@@ -1,0 +1,60 @@
+<div
+  class="w-[96%] max-w-[400px] relative top-[10%] shadow border rounded p-3 mx-auto"
+>
+  <h4 class="text-center">Please log in to continue</h4>
+  <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+    <div class="mb-1">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        class="w-full border-[2px] px-2 py-1 rounded-[4px] mt-1 border-blue-100 focus:outline-0 focus:border-blue-400 duration-75"
+        id="email"
+        [ngClass]="{
+          'border-red-300':
+            email && email.errors && (email.touched || email.dirty),
+          'focus:border-red-400':
+            email && email.errors && (email.touched || email.dirty)
+        }"
+        formControlName="email"
+      />
+      <div
+        *ngIf="email && email.errors && (email.touched || email.dirty)"
+        class="text-red-500 font-medium text-[12px]"
+      >
+        <span *ngIf="email.errors?.['required']">Email is required</span>
+        <span *ngIf="email.errors?.['email']">Enter a valid email</span>
+      </div>
+    </div>
+    <div class="mb-1">
+      <label for="password">Password:</label>
+      <input
+        type="email"
+        class="w-full border-[2px] px-2 py-1 rounded-[4px] mt-1 border-blue-100 focus:outline-0 focus:border-blue-400 duration-75"
+        id="password"
+        [ngClass]="{
+          'border-red-300':
+            password && password.errors && (password.touched || password.dirty),
+          'focus:border-red-400':
+            password && password.errors && (password.touched || password.dirty)
+        }"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          password && password.errors && (password.touched || password.dirty)
+        "
+        class="text-red-500 font-medium text-[12px]"
+      >
+        <span *ngIf="password.errors?.['required']">Password is required</span>
+        <span *ngIf="password.errors?.['minlength']"
+          >Password should at least 7 digits</span
+        >
+      </div>
+    </div>
+    <button
+      class="mt-2 px-3 py-2 bg-cyan-600 text-white text-[13px] rounded shadow"
+    >
+      Submit
+    </button>
+  </form>
+</div>
